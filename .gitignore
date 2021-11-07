@@ -1,0 +1,29 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+node_modules/
+/fmv-client/.pnp
+/fmv-client/.pnp.js
+
+# testing
+/fmv-client/coverage
+
+# production
+/fmv-client/build
+
+# misc
+/fmv-client.DS_Store
+/fmv-client.env.local
+/fmv-client.env.development.local
+/fmv-client.env.test.local
+/fmv-client.env.production.local
+
+/fmv-clientnpm-debug.log*
+/fmv-clientyarn-debug.log*
+/fmv-clientyarn-error.log*
+
+.vs
+.vscode
+
+bin/
+obj/
