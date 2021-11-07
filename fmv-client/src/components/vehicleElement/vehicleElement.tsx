@@ -1,8 +1,10 @@
 import React from 'react';
 import { Vehicle } from '../../models/vehicle';
+import './vehicleElement.css';
 
 export namespace VehicleElementComponent {
     export interface Props {
+        key: number;
         vehicle: Vehicle;
     }
 
@@ -12,17 +14,17 @@ export namespace VehicleElementComponent {
 }
 
 export class VehicleElement extends React.Component<VehicleElementComponent.Props/*, VehicleElementComponent.State*/> {
-    constructor(props: VehicleElementComponent.Props) {
-        super(props);
-    }
+    // constructor(props: VehicleElementComponent.Props) {
+    //     super(props);
+    // }
 
-    private renderdElement(blockClass: string): JSX.Element {
+    private renderdElement(): JSX.Element {
         return (
-            <div className={`${blockClass}_row`}>
-                <div className={`${blockClass}_cell`}>{this.props.vehicle.Brand}</div>
-                <div className={`${blockClass}_cell`}>{this.props.vehicle.Model}</div>
-                <div className={`${blockClass}_cell`}>{this.props.vehicle.Year}</div>
-                <div className={`${blockClass}_cell`}>{this.props.vehicle.Price}</div>
+            <div className="row">
+                <div className="cell">{this.props.vehicle.Brand}</div>
+                <div className="cell">{this.props.vehicle.Model}</div>
+                <div className="cell">{this.props.vehicle.Year}</div>
+                <div className="cell">{this.props.vehicle.Price}</div>
             </div>
         );
     }
@@ -36,11 +38,9 @@ export class VehicleElement extends React.Component<VehicleElementComponent.Prop
     // }
 
     public render(): JSX.Element {
-        const blockClass = "vehicle-element";
-
         return (
-            <div className={blockClass}>
-                {this.renderdElement(blockClass)}
+            <div className="vehicle-element">
+                {this.renderdElement()}
             </div>
         );
     }

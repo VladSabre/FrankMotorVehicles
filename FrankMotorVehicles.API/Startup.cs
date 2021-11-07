@@ -25,7 +25,12 @@ namespace FrankMotorVehicles.API
             services.AddDbContext<FrankMotorVehiclesDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddControllers();
+            services.AddCors();
+
+            services.AddControllers()
+                .AddJsonOptions(options =>
+                options.JsonSerializerOptions.PropertyNamingPolicy = null);
+
             services.AddScoped<IVehicleService, VehicleService>();
             services.AddScoped<IVehicleRepository, VehicleRepository>();
         }
@@ -41,6 +46,11 @@ namespace FrankMotorVehicles.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(x => x.AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials()
+                .WithOrigins(Configuration.GetValue<string>("FrontendURL")));
 
             app.UseAuthorization();
 

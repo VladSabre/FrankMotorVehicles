@@ -2,25 +2,25 @@
 
 # dependencies
 node_modules/
-/fmv-client/.pnp
-/fmv-client/.pnp.js
+.pnp
+.pnp.js
 
 # testing
-/fmv-client/coverage
+coverage/
 
 # production
-/fmv-client/build
+build/
 
 # misc
-/fmv-client.DS_Store
-/fmv-client.env.local
-/fmv-client.env.development.local
-/fmv-client.env.test.local
-/fmv-client.env.production.local
+DS_Store
+env.local
+env.development.local
+env.test.local
+env.production.local
 
-/fmv-clientnpm-debug.log*
-/fmv-clientyarn-debug.log*
-/fmv-clientyarn-error.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 .vs
 .vscode

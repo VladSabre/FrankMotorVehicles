@@ -25,45 +25,42 @@ export class VehicleList extends React.Component<VehicleListComponent.Props, Veh
         this.props.setLoaderVisibility(visibility);
     }
 
-    private async getList(): Promise<Vehicle[]> {
+    private getList(): Promise<Vehicle[]> {
         const service = new VehicleService();
         this.setLoaderVisibility(true);
 
         try {
-            const list = await service.getVehicleList();
-            this.setLoaderVisibility(false);
-            return list;
+            return service.getVehicleList();
         } catch {
             this.setLoaderVisibility(false);
         }
 
-        return [];
+        return Promise.resolve([]);
     }
 
-    private renderListHeader(blockClass: string): JSX.Element {
+    private renderListHeader(): JSX.Element {
         return (
-            <div className={`${blockClass}_header-row`}>
-                <div className={`${blockClass}_cell`}>Brand</div>
-                <div className={`${blockClass}_cell`}>Model</div>
-                <div className={`${blockClass}_cell`}>Year</div>
-                <div className={`${blockClass}_cell`}>Price</div>
+            <div className="header-row row">
+                <div className="cell">Brand</div>
+                <div className="cell">Model</div>
+                <div className="cell">Year</div>
+                <div className="cell">Price</div>
             </div>
         );
     }
 
-    public async componentDidMount(): Promise<void> {
-        const vehicleList = await this.getList();
-        this.setState({ vehicleList: vehicleList });
+    public componentDidMount(): void {
+        this.getList().then(vehicleList => {
+            this.setState({ vehicleList: vehicleList });
+            this.setLoaderVisibility(false);
+        });
     }
 
     public render(): JSX.Element {
-        const blockClass = "vehicle-list";
         return (
-            <div className={blockClass}
-            // ref={this.setVehicleListRef}
-            >
-                {this.renderListHeader(blockClass)}
-                {this.state.vehicleList.map((vehicle: Vehicle) => <VehicleElement vehicle={vehicle}></VehicleElement>)}
+            <div className="vehicle-list container">
+                {this.renderListHeader()}
+                {this.state.vehicleList.map((vehicle: Vehicle) => <VehicleElement key={vehicle.Id} vehicle={vehicle}></VehicleElement>)}
             </div>
         );
     }

@@ -8,7 +8,7 @@ namespace FrankMotorVehicles.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VehicleController : ControllerBase
+    public class VehicleController : BaseController
     {
         private readonly IVehicleService _service;
 
@@ -19,9 +19,9 @@ namespace FrankMotorVehicles.API.Controllers
 
         // GET api/<VehicleController>
         [HttpGet]
-        public IEnumerable<Vehicle> Get()
+        public Response<IEnumerable<Vehicle>> Get()
         {
-            return _service.GetAll().Select(v => new Vehicle
+            var result = _service.GetAll().Select(v => new Vehicle
             {
                 Id = v.Id,
                 Brand = v.Brand,
@@ -30,18 +30,20 @@ namespace FrankMotorVehicles.API.Controllers
                 Price = v.Price,
                 Licensed = v.Licensed
             });
+
+            return Ok(result);
         }
 
         // GET api/<VehicleController>/5
         [HttpGet("{id}")]
-        public ActionResult<VehicleInfo> Get(int id)
+        public Response<VehicleInfo> Get(int id)
         {
             var info = _service.GetInfo(id);
 
             if (info == null)
-                return NotFound();
+                return NotFound<VehicleInfo>();
 
-            return new VehicleInfo
+            var mappedInfo = new VehicleInfo
             {
                 Id = info.Id,
                 WarehouseName = info.WarehouseName,
@@ -51,6 +53,8 @@ namespace FrankMotorVehicles.API.Controllers
                     Longitude = info.WarehouseLocation.Longitude
                 }
             };
+
+            return Ok(mappedInfo);
         }
     }
 }
