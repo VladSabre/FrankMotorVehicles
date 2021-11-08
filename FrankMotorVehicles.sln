@@ -5,9 +5,13 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrankMotorVehicles.API", "FrankMotorVehicles.API\FrankMotorVehicles.API.csproj", "{ABC23153-FBC5-471D-BC89-40CA0440AF42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrankMotorVehicles.DAL", "FrankMotorVehicles.DAL\FrankMotorVehicles.DAL.csproj", "{2EF2B68A-7C19-4B39-A1D8-16340D9A1F4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrankMotorVehicles.DAL", "FrankMotorVehicles.DAL\FrankMotorVehicles.DAL.csproj", "{2EF2B68A-7C19-4B39-A1D8-16340D9A1F4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrankMotorVehicles.BusinessLogic", "FrankMotorVehicles.BusinessLogic\FrankMotorVehicles.BusinessLogic.csproj", "{81CFE1B8-C42A-46F2-A7CD-BA07B09FFEB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrankMotorVehicles.BusinessLogic", "FrankMotorVehicles.BusinessLogic\FrankMotorVehicles.BusinessLogic.csproj", "{81CFE1B8-C42A-46F2-A7CD-BA07B09FFEB2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D85BFF1E-75D5-482B-B3F8-3E1C1CBE046E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrankMotorVehicles.BusinessLogic.Tests", "FrankMotorVehicles.BusinessLogic.Tests\FrankMotorVehicles.BusinessLogic.Tests.csproj", "{4121D91E-888D-4AD6-897D-488E46CAB7F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +31,16 @@ Global
 		{81CFE1B8-C42A-46F2-A7CD-BA07B09FFEB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81CFE1B8-C42A-46F2-A7CD-BA07B09FFEB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81CFE1B8-C42A-46F2-A7CD-BA07B09FFEB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4121D91E-888D-4AD6-897D-488E46CAB7F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4121D91E-888D-4AD6-897D-488E46CAB7F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4121D91E-888D-4AD6-897D-488E46CAB7F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4121D91E-888D-4AD6-897D-488E46CAB7F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4121D91E-888D-4AD6-897D-488E46CAB7F9} = {D85BFF1E-75D5-482B-B3F8-3E1C1CBE046E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8822DB11-A7C1-46A1-B550-BCA30600BF56}

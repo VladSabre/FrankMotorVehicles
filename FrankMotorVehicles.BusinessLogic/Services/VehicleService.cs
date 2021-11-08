@@ -38,6 +38,7 @@ namespace FrankMotorVehicles.BusinessLogic.Services
                 .Select(v => new VehicleInfo
                 {
                     Id = v.Id,
+                    WarehouseId = v.Warehouse.Id,
                     WarehouseName = v.Warehouse.Name,
                     WarehouseLocation = new Location
                     {

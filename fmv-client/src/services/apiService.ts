@@ -8,22 +8,16 @@ export class ApiService {
     }
 
     public get<TResponse>(url: string, abortSignal?: AbortSignal): Promise<TResponse> {
-        const requestOptions = this.getRequestOptions(false, abortSignal);
+        const requestOptions = this.getRequestOptions(abortSignal);
         requestOptions.method = 'GET';
 
         return this.fetchAsJson<TResponse>(`${url}?_=${Date.now()}`, requestOptions);
     }
 
-    private getRequestOptions(
-        containsBody: boolean,
-        abortSignal?: AbortSignal
-    ): RequestInit {
+    private getRequestOptions(abortSignal?: AbortSignal): RequestInit {
         const headers = new Headers({
             'Accept': 'application/json'
         });
-
-        if (containsBody)
-            headers.append('Content-Type', 'application/json');
 
         return {
             //credentials: 'include',

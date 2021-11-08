@@ -1,0 +1,14 @@
+.vehicle-element{
+    width: 800px;
+
+    &_info {
+        margin: 15px;
+    }
+
+    &_row {
+        border-top: 1px solid #000;
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,11 @@
+.vehicle-list {
+    background-color: #fff;
+
+    &_header-row {
+        border-bottom: 2px solid #000;
+
+        &_cell {
+            font-weight: bold;
+        }
+    }
+}

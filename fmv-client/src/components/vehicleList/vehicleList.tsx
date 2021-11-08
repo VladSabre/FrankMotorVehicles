@@ -1,8 +1,8 @@
 import React from 'react';
 import { Vehicle } from '../../models/vehicle';
-import { VehicleService } from '../../services/vehicleService';
 import { VehicleElement } from '../vehicleElement/vehicleElement';
-import './vehicleList.css';
+import { VehicleService } from '../../services/vehicleService';
+import './vehicleList.scss';
 
 export namespace VehicleListComponent {
     export interface Props {
@@ -38,13 +38,13 @@ export class VehicleList extends React.Component<VehicleListComponent.Props, Veh
         return Promise.resolve([]);
     }
 
-    private renderListHeader(): JSX.Element {
+    private renderListHeader(baseClass: string): JSX.Element {
         return (
-            <div className="header-row row">
-                <div className="cell">Brand</div>
-                <div className="cell">Model</div>
-                <div className="cell">Year</div>
-                <div className="cell">Price</div>
+            <div className={`${baseClass}_header-row row`}>
+                <div className={`${baseClass}_cell cell`}>Brand</div>
+                <div className={`${baseClass}_cell cell`}>Model</div>
+                <div className={`${baseClass}_cell cell`}>Year</div>
+                <div className={`${baseClass}_cell cell`}>Price</div>
             </div>
         );
     }
@@ -57,9 +57,10 @@ export class VehicleList extends React.Component<VehicleListComponent.Props, Veh
     }
 
     public render(): JSX.Element {
+        const baseClass = "vehicle-list";
         return (
-            <div className="vehicle-list container">
-                {this.renderListHeader()}
+            <div className={`${baseClass} container`}>
+                {this.renderListHeader(baseClass)}
                 {this.state.vehicleList.map((vehicle: Vehicle) => <VehicleElement key={vehicle.Id} vehicle={vehicle}></VehicleElement>)}
             </div>
         );

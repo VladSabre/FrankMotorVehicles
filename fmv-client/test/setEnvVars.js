@@ -1,0 +1,1 @@
+process.env.REACT_APP_API_URL = 'MyUrl:8080'
