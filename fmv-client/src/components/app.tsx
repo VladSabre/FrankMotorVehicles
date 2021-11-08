@@ -1,8 +1,8 @@
 import React from 'react';
-import { TopMenu } from '../components/topMenu/topMenu';
-import './app.css';
 import { Loader } from './loader/loader';
+import { TopMenu } from '../components/topMenu/topMenu';
 import { VehicleList } from './vehicleList/vehicleList';
+import './app.scss';
 
 export namespace AppComponent {
     export interface State {
