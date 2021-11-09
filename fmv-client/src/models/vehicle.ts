@@ -4,4 +4,5 @@ export interface Vehicle {
     Model: string;
     Year: number;
     Price: number;
+    Licensed: boolean;
 }
