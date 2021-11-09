@@ -20,9 +20,6 @@ export function getResolvedFetchMock(data: string): jest.Mock {
         const p = new Promise(resolve => {
             resolve({
                 ok: true,
-                text: function () {
-                    return Promise.resolve(data);
-                },
                 json: function () {
                     return Promise.resolve(JSON.parse(data));
                 }

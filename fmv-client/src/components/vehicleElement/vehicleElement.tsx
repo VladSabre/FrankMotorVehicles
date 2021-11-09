@@ -1,13 +1,16 @@
 import React from 'react';
-import { Button, Card } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import { AddedVehicle } from '../../models/addedVehicle';
 import { Vehicle } from '../../models/vehicle';
 import { VehicleInfo } from '../../models/vehicleInfo';
 import { VehicleService } from '../../services/vehicleService';
+import { VehicleInfoPanel } from '../vehicleInfo/vehicleInfoPanel';
 import './vehicleElement.scss';
 
 export namespace VehicleElementComponent {
     export interface Props {
         vehicle: Vehicle;
+        addToCart(addedVehicle: AddedVehicle): void;
     }
 
     export interface State {
@@ -37,33 +40,37 @@ export class VehicleElement extends React.Component<VehicleElementComponent.Prop
         })
     }
 
+    private renderMoreButton(): JSX.Element {
+        if (this.props.vehicle.Licensed && !this.state.isExtended)
+            return (<Button variant="secondary" onClick={this.onClick}>
+                More...
+            </Button>)
+
+        return (<React.Fragment />);
+    }
+
     private renderdElement(baseClass: string): JSX.Element {
+        const notLicensed = !this.props.vehicle.Licensed ? `${baseClass}_row__not-licensed` : '';
         return (
-            <div className={`${baseClass}_row row`}>
+            <div className={`${baseClass}_row ${notLicensed} row`}>
                 <div className={`${baseClass}_cell cell`}>{this.props.vehicle.Brand}</div>
                 <div className={`${baseClass}_cell cell`}>{this.props.vehicle.Model}</div>
                 <div className={`${baseClass}_cell cell`}>{this.props.vehicle.Year}</div>
                 <div className={`${baseClass}_cell cell`}>{this.props.vehicle.Price}</div>
-                <div className={`${baseClass}_cell cell`}>
-                    <Button variant="secondary" onClick={this.onClick}>
-                        More...
-                    </Button>
-                </div>
+                <div className={`${baseClass}_cell cell`}>{this.renderMoreButton()}</div>
             </div>
         );
     }
 
-    private renderExtendedElement(baseClass: string): JSX.Element {
+    private renderExtendedElement(): JSX.Element {
         if (!this.state.isExtended || !this.state.info)
             return (<React.Fragment />);
 
-        return (
-            <div className={`${baseClass}_info`}>
-                <Card>
-                    <Card.Body>Located in {this.state.info.WarehouseName} warehouse</Card.Body>
-                </Card>
-            </div>
-        );
+        return (<VehicleInfoPanel
+            vehicleInfo={this.state.info}
+            vehicle={this.props.vehicle}
+            addToCart={this.props.addToCart}
+        />);
     }
 
     public render(): JSX.Element {
@@ -72,7 +79,7 @@ export class VehicleElement extends React.Component<VehicleElementComponent.Prop
         return (
             <div className={`${baseClass}`}>
                 {this.renderdElement(baseClass)}
-                {this.renderExtendedElement(baseClass)}
+                {this.renderExtendedElement()}
             </div>
         );
     }

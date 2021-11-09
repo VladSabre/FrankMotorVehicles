@@ -1,4 +1,5 @@
 ﻿using FrankMotorVehicles.API.Models;
+using FrankMotorVehicles.API.Resources;
 using FrankMotorVehicles.BusinessLogic.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace FrankMotorVehicles.API.Controllers
             _service = service;
         }
 
-        // GET api/<VehicleController>
+        // GET api/Vehicle
         [HttpGet]
         public Response<IEnumerable<Vehicle>> Get()
         {
@@ -34,7 +35,7 @@ namespace FrankMotorVehicles.API.Controllers
             return Ok(result);
         }
 
-        // GET api/<VehicleController>/5
+        // GET api/Vehicle/5
         [HttpGet("{id}")]
         public Response<VehicleInfo> Get(int id)
         {

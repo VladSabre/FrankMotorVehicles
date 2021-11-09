@@ -1,0 +1,8 @@
+.cart-container{
+    position: relative;
+    &_counter {
+        right: -10px;
+        position: absolute;
+        top: -5px;
+    }
+}

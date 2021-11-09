@@ -1,4 +1,4 @@
-﻿namespace FrankMotorVehicles.API.Models
+﻿namespace FrankMotorVehicles.API.Resources
 {
     public class VehicleInfo
     {

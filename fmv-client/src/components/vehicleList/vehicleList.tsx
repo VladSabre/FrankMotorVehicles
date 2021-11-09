@@ -1,4 +1,5 @@
 import React from 'react';
+import { AddedVehicle } from '../../models/addedVehicle';
 import { Vehicle } from '../../models/vehicle';
 import { VehicleElement } from '../vehicleElement/vehicleElement';
 import { VehicleService } from '../../services/vehicleService';
@@ -7,6 +8,7 @@ import './vehicleList.scss';
 export namespace VehicleListComponent {
     export interface Props {
         setLoaderVisibility(visibility: boolean): void;
+        addToCart(addedVehicle: AddedVehicle): void;
     }
 
     export interface State {
@@ -32,10 +34,8 @@ export class VehicleList extends React.Component<VehicleListComponent.Props, Veh
         try {
             return service.getVehicleList();
         } catch {
-            this.setLoaderVisibility(false);
+            return Promise.resolve([]);
         }
-
-        return Promise.resolve([]);
     }
 
     private renderListHeader(baseClass: string): JSX.Element {
@@ -61,7 +61,13 @@ export class VehicleList extends React.Component<VehicleListComponent.Props, Veh
         return (
             <div className={`${baseClass} container`}>
                 {this.renderListHeader(baseClass)}
-                {this.state.vehicleList.map((vehicle: Vehicle) => <VehicleElement key={vehicle.Id} vehicle={vehicle}></VehicleElement>)}
+                {this.state.vehicleList.map((vehicle: Vehicle) =>
+                    <VehicleElement
+                        key={vehicle.Id}
+                        vehicle={vehicle}
+                        addToCart={this.props.addToCart}
+                    />
+                )}
             </div>
         );
     }
