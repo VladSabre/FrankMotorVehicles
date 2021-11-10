@@ -13,5 +13,6 @@
 #### Frontend
 * To build the UI you'll need npm installed
 * Specify backend url in the .env file (https://localhost:44319/ by default)
-* Go to fmv-client folder and execute `npm run start`
+* Go to fmv-client folder and run `npm install` and then `npm run start`
 * The app will be available via http://localhost:3000/ (3000 is the default port, you can change it in the .env file)
+* To run the tests execute `npm test`
