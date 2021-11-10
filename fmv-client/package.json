@@ -2,7 +2,7 @@
     "name": "fmv-client",
     "version": "0.1.0",
     "private": true,
-    "PUBLIC_URL": "https://localhost:44319/",
+    "PUBLIC_URL": "http://localhost:3000/",
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^1.2.36",
         "@fortawesome/free-solid-svg-icons": "^5.15.4",

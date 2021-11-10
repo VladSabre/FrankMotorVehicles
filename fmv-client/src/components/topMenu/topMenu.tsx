@@ -12,10 +12,6 @@ export namespace TopMenuComponent {
 }
 
 export class TopMenu extends React.Component<TopMenuComponent.Props> {
-    constructor(props: TopMenuComponent.Props) {
-        super(props);
-    }
-
     private renderCartContent(): JSX.Element {
         const total = this.props.cart.reduce((partial_sum, a) => partial_sum + a.Price, 0).toFixed(2);
 

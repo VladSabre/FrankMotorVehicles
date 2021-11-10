@@ -2,8 +2,8 @@ import { ApiResponse } from '../models/apiResponse';
 
 export class ApiService {
     public constructor() {
-        if (!(<any>window).fetchActive) {
-            (<any>window).fetchActive = 0;
+        if (!(window as any).fetchActive) {
+            (window as any).fetchActive = 0;
         }
     }
 
@@ -45,7 +45,7 @@ export class ApiService {
     }
 
     private async fetchInternal(url: string, requestOptions: RequestInit): Promise<Response> {
-        (<any>window).fetchActive++;
+        (window as any).fetchActive++;
 
         try {
             return await fetch(`${process.env.REACT_APP_API_URL}${url}`, requestOptions);
@@ -55,7 +55,7 @@ export class ApiService {
             }
             throw error;
         } finally {
-            (<any>window).fetchActive--;
+            (window as any).fetchActive--;
         }
     }
 }

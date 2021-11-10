@@ -13,8 +13,8 @@ export namespace AppComponent {
 }
 
 class App extends React.Component<{}, AppComponent.State> {
-    constructor() {
-        super({});
+    constructor(props: {}) {
+        super(props);
 
         this.state = { isLoaderVisible: false, cart: [] };
 
